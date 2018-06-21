@@ -21,29 +21,29 @@ public class BaseTest {
     public void testOperadores() {
         double referencia = 20;
 
-        ICondicion condicion;
+        ICondicion<Double> condicion;
 
         // igual
-        condicion = new Condicion(IGUAL, referencia);
-        assertTrue(condicion.evaluar(20));
-        assertFalse(condicion.evaluar(21));
+        condicion = new Condicion<Double>(IGUAL, referencia);
+        assertTrue(condicion.evaluar(20D));
+        assertFalse(condicion.evaluar(21D));
 
         // mayor
-        condicion = new Condicion(MAYOR, referencia);
-        assertTrue(condicion.evaluar(21));
-        assertFalse(condicion.evaluar(20));
+        condicion = new Condicion<Double>(MAYOR, referencia);
+        assertTrue(condicion.evaluar(21D));
+        assertFalse(condicion.evaluar(20D));
 
         // menor
-        condicion = new Condicion(MENOR, referencia);
-        assertTrue(condicion.evaluar(19));
-        assertFalse(condicion.evaluar(20));
+        condicion = new Condicion<Double>(MENOR, referencia);
+        assertTrue(condicion.evaluar(19D));
+        assertFalse(condicion.evaluar(20D));
 
     }
 
     @Test
     public void testRegla_1Condicion_ok() {
         double referencia = 20;
-        ICondicion condicion = new Condicion(IGUAL, referencia);
+        ICondicion condicion = new Condicion<Double>(IGUAL, referencia);
 
         // mock Accion
         IAccion accion = Mockito.mock(IAccion.class);
@@ -79,10 +79,10 @@ public class BaseTest {
     @Test
     public void testRegla_NCondiciones_ok() {
         double referencia1 = 20;
-        ICondicion condicion1 = new Condicion(IGUAL, referencia1);
+        ICondicion condicion1 = new Condicion<Double>(IGUAL, referencia1);
 
         double referencia2 = 70;
-        ICondicion condicion2 = new Condicion(MENOR, referencia2);
+        ICondicion condicion2 = new Condicion<Double>(MENOR, referencia2);
 
         // mock Accion
         IAccion accion = Mockito.mock(IAccion.class);
@@ -100,10 +100,10 @@ public class BaseTest {
     @Test
     public void testRegla_NCondiciones_fail() {
         double referencia1 = 20;
-        ICondicion condicion1 = new Condicion(IGUAL, referencia1);
+        ICondicion condicion1 = new Condicion<Double>(IGUAL, referencia1);
 
         double referencia2 = 70;
-        ICondicion condicion2 = new Condicion(MENOR, referencia2);
+        ICondicion condicion2 = new Condicion<Double>(MENOR, referencia2);
 
         // mock Accion
         IAccion accion = Mockito.mock(IAccion.class);

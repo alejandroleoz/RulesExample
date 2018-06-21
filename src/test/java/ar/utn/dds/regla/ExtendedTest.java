@@ -26,13 +26,13 @@ public class ExtendedTest {
         double valorReferencia = 20D;
 
         // mock de ValueProvider
-        IValueProvider valueProvider = Mockito.mock(IValueProvider.class);
+        IValueProvider<Double> valueProvider = Mockito.mock(IValueProvider.class);
         Mockito.when(valueProvider.getValue()).thenReturn(valorReferencia);
 
-        CondicionConProvider condicionConProvider = new CondicionConProvider(IGUAL, valorReferencia, valueProvider);
+        CondicionConProvider condicionConProvider = new CondicionConProvider<Double>(IGUAL, valorReferencia, valueProvider);
         assertTrue(condicionConProvider.evaluar());
 
-        condicionConProvider = new CondicionConProvider(MAYOR, valorReferencia, valueProvider);
+        condicionConProvider = new CondicionConProvider<Double>(MAYOR, valorReferencia, valueProvider);
         assertFalse(condicionConProvider.evaluar());
     }
 
@@ -41,15 +41,15 @@ public class ExtendedTest {
     public void reglaConProvider() {
 
         // Mock para value provider 1
-        IValueProvider vp1 = Mockito.mock(IValueProvider.class);
+        IValueProvider<Double> vp1 = Mockito.mock(IValueProvider.class);
         Mockito.when(vp1.getValue()).thenReturn(20D);
 
         // Mock para value provider 2
-        IValueProvider vp2 = Mockito.mock(IValueProvider.class);
+        IValueProvider<Double> vp2 = Mockito.mock(IValueProvider.class);
         Mockito.when(vp2.getValue()).thenReturn(60D);
 
-        CondicionConProvider c1 = new CondicionConProvider(IGUAL, 20, vp1);
-        CondicionConProvider c2 = new CondicionConProvider(MENOR, 70, vp2);
+        CondicionConProvider c1 = new CondicionConProvider<Double>(IGUAL, 20D, vp1);
+        CondicionConProvider c2 = new CondicionConProvider<Double>(MENOR, 70D, vp2);
 
         ReglaConProviders regla = new ReglaConProviders();
         regla.setCondiciones(Arrays.asList(c1, c2));
@@ -61,15 +61,15 @@ public class ExtendedTest {
     public void reglaConProvider_fail() {
 
         // Mock para value provider 1
-        IValueProvider vp1 = Mockito.mock(IValueProvider.class);
+        IValueProvider<Double> vp1 = Mockito.mock(IValueProvider.class);
         Mockito.when(vp1.getValue()).thenReturn(20D);
 
         // Mock para value provider 2
-        IValueProvider vp2 = Mockito.mock(IValueProvider.class);
+        IValueProvider<Double> vp2 = Mockito.mock(IValueProvider.class);
         Mockito.when(vp2.getValue()).thenReturn(80D);
 
-        CondicionConProvider c1 = new CondicionConProvider(IGUAL, 20, vp1);
-        CondicionConProvider c2 = new CondicionConProvider(MENOR, 70, vp2);
+        CondicionConProvider c1 = new CondicionConProvider<Double>(IGUAL, 20D, vp1);
+        CondicionConProvider c2 = new CondicionConProvider<Double>(MENOR, 70D, vp2);
 
         ReglaConProviders regla = new ReglaConProviders();
         regla.setCondiciones(Arrays.asList(c1, c2));

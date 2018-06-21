@@ -2,7 +2,7 @@ package ar.utn.dds.regla.base;
 
 import java.util.List;
 
-public class Regla {
+public class Regla<T> {
 
     protected List<ICondicion> condiciones;
     private List<IAccion> acciones;
@@ -23,7 +23,7 @@ public class Regla {
         this.acciones = acciones;
     }
 
-    public boolean evaluar(List<Double> valoresAEvaluar) {
+    public boolean evaluar(List<T> valoresAEvaluar) {
 
         // Evaluo todas las condiciones
         boolean valid = this.evaluarAND(valoresAEvaluar);
@@ -36,7 +36,7 @@ public class Regla {
         return valid;
     }
 
-    private boolean evaluarAND(List<Double> valoresAEvaluar) {
+    private boolean evaluarAND(List<T> valoresAEvaluar) {
         boolean valid = true;
         int counter = 0;
         for (ICondicion condicion : this.condiciones) {

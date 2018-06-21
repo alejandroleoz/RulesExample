@@ -1,7 +1,7 @@
 package ar.utn.dds.regla.extended;
 
-public interface IValueProvider {
+public interface IValueProvider<T> {
 
-    public double getValue();
+    public T getValue();
 
 }

@@ -23,9 +23,9 @@ public class SGETest {
         double valorReferencia = 20D;
 
         // Mock del sensor
-        Sensor sensor = new Sensor() {
+        Sensor<Double> sensor = new Sensor<Double>() {
             @Override
-            public double doMedir() {
+            public Double doMedir() {
                 return valorReferencia;
             }
         };
@@ -38,7 +38,7 @@ public class SGETest {
         dispositivo.setSensores(Arrays.asList(sensor));
 
         // 1 condicion
-        CondicionConProvider condicion = new CondicionConProvider(new OperadorIgual(), valorReferencia, sensor);
+        CondicionConProvider condicion = new CondicionConProvider<Double>(new OperadorIgual(), valorReferencia, sensor);
 
         // creo 1 regla asociada al sensor del disposiivo
         ReglaConProviders regla = new ReglaConProviders();

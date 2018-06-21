@@ -5,12 +5,12 @@ import ar.utn.dds.regla.extended.IValueProvider;
 import java.util.Observable;
 
 // OBSERVABLE por DISPOSITIVO
-public abstract class Sensor extends Observable implements IValueProvider {
+public abstract class Sensor<T> extends Observable implements IValueProvider {
 
-    private double ultimaMedicion;
+    private T ultimaMedicion;
 
 
-    public double medir() {
+    public T medir() {
         this.ultimaMedicion = this.doMedir();
 
         // notificar al dispositivo que hubo medicion
@@ -21,12 +21,12 @@ public abstract class Sensor extends Observable implements IValueProvider {
     }
 
     @Override
-    public double getValue() {
+    public T getValue() {
         return ultimaMedicion;
     }
 
     // Template Method (deberia ser private, pero lo dejo public por ahora para usar con Mockito)
-    public abstract double doMedir();
+    public abstract T doMedir();
 
 
 }

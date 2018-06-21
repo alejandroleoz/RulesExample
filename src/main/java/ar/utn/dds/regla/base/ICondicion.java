@@ -1,6 +1,6 @@
 package ar.utn.dds.regla.base;
 
-public interface ICondicion {
+public interface ICondicion<T> {
 
-    public boolean evaluar(double valor);
+    public boolean evaluar(T valor);
 }
